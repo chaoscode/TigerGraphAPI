@@ -175,13 +175,6 @@ namespace TigerGraphAPI.Models.TigerGraphAPI
         public Parameters parameters { get; set; }
     }
 
-    public class Parameters
-    {
-        public Builtin builtin { get; set; }
-        public Dynamic dynamic { get; set; }
-        public Static _static { get; set; }
-    }
-
     public class Builtin
     {
         public string _default { get; set; }

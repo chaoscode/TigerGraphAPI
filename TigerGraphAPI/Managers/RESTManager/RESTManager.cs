@@ -60,7 +60,7 @@ namespace TigerGraphAPI.Managers.REST
 
             // Set application type
             request.ContentType = "application/json";
-            
+
             // If we need auth use it
             if (!string.IsNullOrWhiteSpace(username))
             {
