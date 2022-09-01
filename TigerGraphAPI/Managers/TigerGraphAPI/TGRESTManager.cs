@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TigerGraphAPI.Models.REST;
+using TigerGraphAPI.Models.TigerGraphAPI.Core;
 /// <summary>
 /// This is not started
 /// </summary>
@@ -16,12 +17,15 @@ namespace TigerGraphAPI.Managers.TigerGraphAPI
         private string _basePath = "api/";
         private string _username = "";
         private string _password = "";
+        private string _sessionid = "";
 
         public TGRESTManager(string baseurl, string username, string password)
         {
             BaseURL = baseurl;
             Username = username;
             Password = password;
+
+            ResponseAuth result = postLogin(username, password);
         }
 
         public string BaseURL
@@ -48,8 +52,14 @@ namespace TigerGraphAPI.Managers.TigerGraphAPI
             set => _password = value;
         }
 
+        public string SessionID
+        {
+            get => _sessionid;
+            set => _sessionid = value;
+        }
+
         //http://10.10.20.101:14240/api/auth/login
-        public string postLogin(string username, string password)
+        public ResponseAuth postLogin(string username, string password)
         {
 
             // Create response object
@@ -79,12 +89,15 @@ namespace TigerGraphAPI.Managers.TigerGraphAPI
             CallRestOutput RestResult = RESTMgr.CallREST(inpt);
 
             // Get result object
-            Models.TigerGraphAPI.ResponseRequestToken result = new Models.TigerGraphAPI.ResponseRequestToken();
+            ResponseAuth result = new ResponseAuth();
 
             // Build response object and return
-            result = JsonConvert.DeserializeObject<Models.TigerGraphAPI.ResponseRequestToken>(RestResult.Output);
+            result = JsonConvert.DeserializeObject<Models.TigerGraphAPI.Core.ResponseAuth>(RestResult.Output);
 
-            return "";
+            // Setup Session
+            SessionID = RestResult.Cookies.FirstOrDefault(t => t.Name == "TigerGraphApp").Value;
+
+            return result;
         }
 
     }

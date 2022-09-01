@@ -15,9 +15,9 @@ namespace TigerGraphAPI
             //result = result;
 
             // not functional yet
-            TGRESTManager TGMgr = new TGRESTManager("http://10.10.20.101:14240/", "tigergraph", "tigergrap");
+            TGRESTManager TGMgr = new TGRESTManager("http://10.10.20.101:14240/", "tigergraph", "tigergraph");
 
-            string result = TGMgr.postLogin("tigergraph", "tigergrap");
+            
         }
     }
 }
