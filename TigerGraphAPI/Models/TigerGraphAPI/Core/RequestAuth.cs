@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TigerGraphAPI.Models.TigerGraphAPI
+namespace TigerGraphAPI.Models.TigerGraphAPI.Core.Auth
 {
 
     public class RequestAuth

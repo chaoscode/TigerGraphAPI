@@ -1,6 +1,7 @@
 ﻿using System;
 using TigerGraphAPI.Managers.TG;
 using TigerGraphAPI.Managers.TigerGraphAPI;
+using TigerGraphAPI.Models.TigerGraphAPI.Core.Search;
 
 namespace TigerGraphAPI
 {
@@ -16,6 +17,8 @@ namespace TigerGraphAPI
 
             // not functional yet
             TGRESTManager TGMgr = new TGRESTManager("http://10.10.20.101:14240/", "tigergraph", "tigergraph");
+
+            searchResponse result = TGMgr.getSearch();
 
             
         }
